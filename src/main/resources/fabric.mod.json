@@ -1,0 +1,51 @@
+{
+	"schemaVersion": 1,
+	"id": "collage",
+	"version": "${version}",
+	"name": "Collage",
+	"description": "Send your screenshots to the server! Save folders go missing and people go - archive your screenshots server-side!",
+	"authors": [
+		"dvitski"
+	],
+	"contact": {
+		"homepage": "https://dvitski.cc",
+        "sources": "https://github.com/dvitski/collage",
+        "issues": "https://github.com/dvitski/collage/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/collage/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			{
+				"value": "cc.dvitski.collage.Collage",
+				"adapter": "kotlin"
+			}
+		],
+		"client": [
+			{
+				"value": "cc.dvitski.collage.CollageClient",
+				"adapter": "kotlin"
+			}
+		],
+		"fabric-datagen": [
+			{
+				"value": "cc.dvitski.collage.CollageDataGenerator",
+				"adapter": "kotlin"
+			}
+		]
+	},
+	"mixins": [
+		"collage.mixins.json",
+		{
+			"config": "collage.client.mixins.json",
+			"environment": "client"
+		}
+	],
+    "accessWidener": "collage.accesswidener",
+	"depends": {
+		"minecraft": "~1.21.10",
+		"fabric-api": "*",
+		"fabric-language-kotlin": "*"
+	}
+}
