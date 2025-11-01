@@ -6,6 +6,7 @@ import cc.dvitski.collage.packet.ServerboundScreenshotPayload
 import com.mojang.blaze3d.platform.NativeImage
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
 import net.minecraft.Util
+import net.minecraft.client.Minecraft
 import java.io.File
 import java.util.UUID
 
@@ -17,6 +18,11 @@ object ClientScreenshotHandler {
     }
 
     fun sendtoServer(nativeImage: NativeImage) {
+        val minecraft = Minecraft.getInstance()
+        if (minecraft.singleplayerServer != null) {
+            return
+        }
+
         if (!ClientPlayNetworking.canSend(CollagePacketTypes.SERVERBOUND_SCREENSHOT)) {
             CollageClient.logger.debug("Did not send screenshot, not in world")
             return
