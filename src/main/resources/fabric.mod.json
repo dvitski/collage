@@ -24,13 +24,13 @@
 		],
 		"client": [
 			{
-				"value": "cc.dvitski.collage.CollageClient",
+				"value": "cc.dvitski.collage.client.CollageClient",
 				"adapter": "kotlin"
 			}
 		],
 		"fabric-datagen": [
 			{
-				"value": "cc.dvitski.collage.CollageDataGenerator",
+				"value": "cc.dvitski.collage.data.CollageDataGenerator",
 				"adapter": "kotlin"
 			}
 		]

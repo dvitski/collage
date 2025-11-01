@@ -1,4 +1,4 @@
-package cc.dvitski.collage
+package cc.dvitski.collage.data
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator

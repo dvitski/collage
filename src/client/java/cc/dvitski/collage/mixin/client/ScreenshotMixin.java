@@ -1,6 +1,6 @@
 package cc.dvitski.collage.mixin.client;
 
-import cc.dvitski.collage.ScreenshotHandler;
+import cc.dvitski.collage.client.ClientScreenshotHandler;
 import com.mojang.blaze3d.platform.NativeImage;
 import net.minecraft.client.Screenshot;
 import net.minecraft.network.chat.Component;
@@ -23,6 +23,6 @@ public class ScreenshotMixin {
             )
     )
     private static void postScreenshot(File file, String string, Consumer<Component> consumer, NativeImage nativeImage, CallbackInfo ci) {
-        ScreenshotHandler.INSTANCE.onScreenshot(consumer, nativeImage);
+        ClientScreenshotHandler.INSTANCE.onScreenshot(nativeImage);
     }
 }
