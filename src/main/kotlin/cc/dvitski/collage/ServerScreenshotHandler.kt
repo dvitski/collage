@@ -1,6 +1,7 @@
 package cc.dvitski.collage
 
 import cc.dvitski.collage.packet.ServerboundScreenshotPayload
+import me.lucko.fabric.api.permissions.v0.Permissions
 import net.minecraft.Util
 import net.minecraft.network.chat.Component
 import net.minecraft.server.MinecraftServer
@@ -15,17 +16,31 @@ import javax.imageio.ImageIO
 
 object ServerScreenshotHandler {
     val LEVEL_RESOURCE = LevelResource("${Collage.MOD_ID}/screenshots")
+    const val PERMISSION = "${Collage.MOD_ID}.screenshot"
 
     fun handleScreenshot(player: ServerPlayer, server: MinecraftServer, payload: ServerboundScreenshotPayload) {
-        val bytes = payload.bytes
+        // check permission
+        if (!Permissions.check(player, PERMISSION, 0)) {
+            return
+        }
 
+        // resolve file
         val path = server
             .getWorldPath(LEVEL_RESOURCE)
             .resolve(player.stringUUID)
 
+        // try save screenshot
         runCatching {
+            val bytes = payload.bytes
             val filename = saveScreenshot(path, bytes)
-            player.sendSystemMessage(Component.literal("Server saved screenshot ($filename)"), true)
+
+            val logMessage = "Saved screenshot of ${player.gameProfile.name} (${player.uuid}): $filename"
+            if (!server.isSingleplayerOwner(player.nameAndId())) {
+                Collage.logger.info(logMessage)
+                player.sendSystemMessage(Component.literal("Server saved screenshot ($filename)"), true)
+            } else {
+                Collage.logger.debug(logMessage)
+            }
         }.exceptionOrNull()?.printStackTrace()
     }
 

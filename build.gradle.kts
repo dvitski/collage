@@ -14,6 +14,7 @@ val loader_version: String by properties
 val fabric_version: String by properties
 val kotlin_version: String by properties
 val fabric_kotlin_version: String by properties
+val fabric_permissions_version: String by properties
 
 version = "$mod_version+$minecraft_version"
 group = maven_group
@@ -23,8 +24,6 @@ base {
 }
 
 repositories {
-    maven("https://maven.terraformersmc.com/releases/")
-    maven("https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/")
 }
 
 loom {
@@ -53,6 +52,10 @@ dependencies {
 
     modImplementation("net.fabricmc.fabric-api:fabric-api:$fabric_version")
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabric_kotlin_version+kotlin.$kotlin_version")
+
+    "me.lucko:fabric-permissions-api:$fabric_permissions_version"
+        .also(::include)
+        .also(::modImplementation)
 }
 
 tasks.processResources {
