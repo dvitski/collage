@@ -17,7 +17,7 @@ object Collage : ModInitializer {
     override fun onInitialize() {
         logger.info("Initializing $MOD_NAME")
 
-        PayloadTypeRegistry.playC2S().register(CollagePacketTypes.SERVERBOUND_SCREENSHOT, ServerboundScreenshotPayload.STREAM_CODEC)
+        PayloadTypeRegistry.playC2S().registerLarge(CollagePacketTypes.SERVERBOUND_SCREENSHOT, ServerboundScreenshotPayload.STREAM_CODEC, ServerboundScreenshotPayload.MAX_PACKET_SIZE)
 
         ServerPlayNetworking.registerGlobalReceiver(CollagePacketTypes.SERVERBOUND_SCREENSHOT) { payload, context ->
             ServerScreenshotHandler.handleScreenshot(context.player(), context.server(), payload)

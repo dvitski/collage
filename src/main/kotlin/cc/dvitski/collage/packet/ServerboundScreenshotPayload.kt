@@ -61,5 +61,6 @@ data class ServerboundScreenshotPayload @Throws(IllegalArgumentException::class)
         )
 
         const val MAX_SCREENSHOT_SIZE = 10 * 1024 * 1024
+        const val MAX_PACKET_SIZE = MAX_SCREENSHOT_SIZE + 4 + 44
     }
 }
