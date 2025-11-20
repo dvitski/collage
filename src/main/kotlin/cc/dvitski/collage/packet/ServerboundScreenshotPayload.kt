@@ -6,7 +6,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf
 import net.minecraft.network.codec.ByteBufCodecs
 import net.minecraft.network.codec.StreamCodec
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload
-import net.minecraft.resources.ResourceLocation
+import net.minecraft.resources.Identifier
 
 data class ServerboundScreenshotPayload @Throws(IllegalArgumentException::class) constructor(
     val size: Int,
@@ -51,7 +51,7 @@ data class ServerboundScreenshotPayload @Throws(IllegalArgumentException::class)
     }
 
     companion object {
-        val ID: ResourceLocation = ResourceLocation.fromNamespaceAndPath(Collage.MOD_ID, "screenshot")
+        val ID: Identifier = Identifier.fromNamespaceAndPath(Collage.MOD_ID, "screenshot")
 
         val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, ServerboundScreenshotPayload> = StreamCodec.composite(
             ByteBufCodecs.VAR_INT, ServerboundScreenshotPayload::size,

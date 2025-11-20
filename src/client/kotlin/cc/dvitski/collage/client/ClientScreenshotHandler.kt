@@ -5,8 +5,8 @@ import cc.dvitski.collage.packet.CollagePacketTypes
 import cc.dvitski.collage.packet.ServerboundScreenshotPayload
 import com.mojang.blaze3d.platform.NativeImage
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking
-import net.minecraft.Util
 import net.minecraft.client.Minecraft
+import net.minecraft.util.Util
 import java.io.File
 import java.util.UUID
 

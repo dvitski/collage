@@ -2,10 +2,10 @@ package cc.dvitski.collage
 
 import cc.dvitski.collage.packet.ServerboundScreenshotPayload
 import me.lucko.fabric.api.permissions.v0.Permissions
-import net.minecraft.Util
 import net.minecraft.network.chat.Component
 import net.minecraft.server.MinecraftServer
 import net.minecraft.server.level.ServerPlayer
+import net.minecraft.util.Util
 import net.minecraft.world.level.storage.LevelResource
 import java.io.ByteArrayInputStream
 import java.io.IOException
